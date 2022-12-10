@@ -1,0 +1,12 @@
+.content-heading {
+    text-align: center;
+    font-weight: 300;
+}
+
+.content-heading-xoxo {
+    color: #FF69B4;
+    font-weight: 700;
+    top: 28px;
+    left: 42%;
+    /*rotate: -10deg;*/
+}
