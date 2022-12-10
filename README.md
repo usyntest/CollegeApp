@@ -1,7 +1,8 @@
 # CollegeApp
 
 ## Running the project
-Run these commands in the project directory 
+Run these commands in the project directory  
+
 Create a virtual environment
 ```
 $ virtualenv venv
@@ -12,7 +13,7 @@ $ venv\Scripts\activate
 ```
 Install Django
 ```
-$ pip install django
+$ pip install -r requirements.txt
 ```
 Run it
 ```
