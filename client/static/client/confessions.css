@@ -6,7 +6,36 @@
 .content-heading-xoxo {
     color: #FF69B4;
     font-weight: 700;
-    top: 28px;
-    left: 42%;
-    /*rotate: -10deg;*/
+    top: 35px;
+    padding-right: 25px;
+    text-align: center;
+}
+
+.add-icon {
+    background-color: #4A4E69;
+    bottom: 55px;
+    right: 10px;
+}
+
+.confessions-post {
+    color: #F2E9E4;
+}
+
+.confessions-post-profile {
+    width: 35px;
+}
+
+.confessions-post-profile-img {
+    width: 35px;
+    height: 35px;
+}
+
+.confessions-post-user-name {
+    font-size: 0.9rem;
+    color: #C9ADA7;
+}
+
+.confessions-post-date-time {
+    color: #9A8C98;
+    font-size: 0.75rem;
 }

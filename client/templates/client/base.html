@@ -16,11 +16,11 @@
 <body>
     <div class="main p-2 relative min-h-screen max-h-screen max-w-screen-md mx-auto">
 
-        <div class="p-1 content-heading shadow-sm absolute top-0 left-0 text-2xl w-full border font-bold">{{ title }}</div>
-        <div class="main-content absolute w-full overflow-auto  left-0 p-2">
+        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">{{ title }}</div>
+        <div class="main-content absolute w-full overflow-auto left-0">
             {% block content %}{% endblock content %}
         </div>
-        <nav class="absolute bottom-0 shadow-sm left-0 flex justify-evenly text-center py-2 w-full border">
+        <nav class="navbar absolute bottom-0 left-0 flex justify-evenly text-center py-2 w-full border-t">
             <div>
                 <a href="{% url 'client-home' %}"><img class="h-7 hover:stroke-white" src="{% static 'client/icons/home.svg' %}" alt="home icon svg"></a>
             </div>
@@ -35,8 +35,9 @@
             </div>
         </nav>
 
-
     </div>
+    {% block js %}
+    {% endblock js %}
 
 </body>
 </html>

@@ -1,8 +1,40 @@
 {% extends 'client/base.html' %}
 {% load static %}
 {% block css %}
-    <link href="{% static 'client/style.css' %}" rel="stylesheet">
+    <link href="{% static 'client/home.css' %}" rel="stylesheet">
 {% endblock css %}
 
 {% block content %}
+    <div>
+        <button class="fixed add-icon p-2 rounded-full">
+            <img class="h-7" src="{% static 'client/icons/add.svg' %}" alt="add icon svg">
+        </button>
+        <div class="town-hall-posts w-full">
+            {% for alert in alerts %}
+                <div class="town-hall-post my-4 flex">
+                    <div>
+                        <div class="town-hall-post-profile rounded-full mt-1">
+                            <img class="rounded-full town-hall-post-profile-img" src="{{ post.profile_img }}" alt="f">
+                        </div>
+                    </div>
+
+                    <div class="ml-2">
+                        <span class="town-hall-post-user-name"><a href="/profile/{{ alert.author.id }}">{{ alert.author }}</a></span>
+                        <span class="town-hall-post-date-time">{{ alert.date_posted.date }},</span>
+                        <span class="town-hall-post-date-time uppercase">{{ alert.date_posted.time }}</span>
+
+                        <h1>{{ alert.content }}</h1>
+                        {% if alert.img %}
+                            <img href="{{ alert.img }}" alt="post img">
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock content %}
+
+{% block js %}
+{% endblock js %}

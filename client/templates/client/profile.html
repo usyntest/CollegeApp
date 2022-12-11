@@ -2,8 +2,11 @@
 {% block css %}
 {% endblock css %}
 {% block content %}
-    <h1>
-    {{ name }}
-    </h1>
-    <h1>{{ profile_id }}</h1>
+    {% if user.username %}
+        <h1>{{ user.username }}</h1>
+        <h1>{{ user.email }}</h1>
+        <h1>{{ user.id }}</h1>
+    {% else %}
+        <h1>User Not Found</h1>
+    {% endif %}
 {% endblock content %}

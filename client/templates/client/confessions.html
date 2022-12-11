@@ -6,6 +6,34 @@
 {% endblock css %}
 
 {% block content %}
-    <span class="content-heading-xoxo fixed text-xl">XOXO</span>
-    <h1>Confessions Page</h1>
+    <div>
+        <div class="content-heading-xoxo w-full max-w-screen-md fixed text-xl">XOXO</div>
+        <button class="fixed add-icon p-2 rounded-full">
+            <img class="h-7" src="{% static 'client/icons/add.svg' %}" alt="add icon svg">
+        </button>
+        <div class="confessions-posts w-full">
+            {% for confession in confessions %}
+                <div class="confessions-post my-4 flex">
+                    <div>
+                        <div class="confessions-post-profile rounded-full mt-1">
+                            <img class="rounded-full confessions-post-profile-img" src="https://w0.peakpx.com/wallpaper/999/115/HD-wallpaper-obito-uchiha-art-handdrawn-naruto.jpg" alt="f">
+                        </div>
+                    </div>
+
+                    <div class="ml-2">
+                        <span class="confessions-post-user-name">Anonymous</span>
+                        <span class="confessions-post-date-time">{{ confession.date_posted.date }},</span>
+                        <span class="confessions-post-date-time">{{ confession.date_posted.time }}</span>
+
+                        <h1>{{ confession.content }}</h1>
+                        {% if post.img %}
+                            <img href="{{ confession.img }}" alt="post img">
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
 {% endblock content %}

@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% if title %}
+        <title>CollegeApp - {{ title }}</title>
+    {% else %}
+        <title>CollegeApp</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'users/style.css' %}">
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    <div class="main p-2 relative min-h-screen max-h-screen max-w-screen-md mx-auto">
+
+        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">{{ title }}</div>
+        <div class="main-content absolute w-full overflow-auto left-0 pt-2">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+</body>

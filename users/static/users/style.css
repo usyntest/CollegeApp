@@ -13,10 +13,6 @@ body {
 
 .main-content {
     top: 50px;
-    bottom: 45px;
+    bottom: 0;
     padding: 0 15px;
-}
-
-.navbar {
-    border-top: #4A4E69 solid 1px;
 }

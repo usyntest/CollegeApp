@@ -1,0 +1,17 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/register.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <form method="POST" class="register-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="py-2 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">Register</button>
+    </form>
+    <div class="text-center">
+        <small>Already have an account? <a class="text-blue-500" href="#">Login</a></small>
+    </div>
+
+{% endblock content %}
