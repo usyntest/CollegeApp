@@ -15,6 +15,7 @@ class Alert(models.Model):
     content = models.TextField(max_length=500)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         return f"\"{self.content}\"\n{self.author}\n{self.date_posted.__str__()}"

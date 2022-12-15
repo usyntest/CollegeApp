@@ -2,11 +2,29 @@
 {% block css %}
 {% endblock css %}
 {% block content %}
-    {% if user.username %}
-        <h1>{{ user.username }}</h1>
-        <h1>{{ user.email }}</h1>
-        <h1>{{ user.id }}</h1>
-    {% else %}
-        <h1>User Not Found</h1>
+    {% if user.is_authenticated %}
+        {% if user.username %}
+            <h1>{{ user.username }}</h1>
+            <h1>{{ user.email }}</h1>
+            <h1>{{ user.id }}</h1>
+            <div class="w-full">
+                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </button>
+            </div>
+        {% else %}
+            <h1>User Not Found</h1>
+        {% endif %}
+    {% else %}    
+        <div class="flex w-full h-full justify-center items-center">
+            <div class="w-full">
+                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
+                    <a href="{% url 'login' %}">Login</a>
+                </button>
+                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
+                    <a href="{% url 'register' %}">Register</a>
+                </button>
+            </div>
+        </div>
     {% endif %}
 {% endblock content %}

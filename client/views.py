@@ -25,11 +25,19 @@ def chat(request):
     return render(request, 'client/chat.html', context)
 
 
-def profile(request, profile_id):
+def other_profile(request, profile_id):
     context = {
         "title": "Profile"
     }
-    user = User.objects.filter(id=profile_id).first()
+    if profile_id:
+        user = User.objects.filter(id=profile_id).first()
     if user:
         context["user"] = user
+    return render(request, 'client/other_profile.html', context)
+
+
+def profile(request):
+    context = {
+        "title": "Profile"
+    }
     return render(request, 'client/profile.html', context)

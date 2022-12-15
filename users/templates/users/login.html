@@ -9,11 +9,10 @@
         <form method="POST" class="register-form text-sm">
             {% csrf_token %}
             {{ form.as_div }}
-            <button class="py-2 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">Register</button>
+            <button class="py-2 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">Login</button>
         </form>
         <div class="text-center">
-            <small>Already have an account? <a class="text-blue-500" href="{% url 'login' %}">Login</a></small>
+            <small>Don't have an account? <a class="text-blue-500" href="{% url 'register' %}">Register</a></small>
         </div>
     </div>
-
 {% endblock content %}

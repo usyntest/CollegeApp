@@ -11,6 +11,34 @@ body {
     border-bottom: #4A4E69 solid 1px;
 }
 
+.message-success {
+    color: #F2E9E4;
+    background-color: rgba(92, 184, 92, .7);
+    border: 2px solid #5cb85c;
+}
+
+.message-info {
+    color: #F2E9E4;
+    background-color: rgba(91, 192, 222, .7);
+    border: 2px solid #5bc0de;
+}
+
+.message-error {
+   color: #F2E9E4;
+   border: 2px solid  #d9534f;
+   background-color: rgba(217, 83, 79, .7);
+}
+
+.errorlist {
+    font-size: 0.75rem;
+    color: #d9534f;
+}
+
+.helptext {
+    font-size: 0.75rem;
+    color: #C9ADA7;
+}
+
 .main-content {
     top: 50px;
     bottom: 0;

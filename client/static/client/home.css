@@ -8,6 +8,16 @@
     color: #F2E9E4;
 }
 
+.special-1{
+    border: 2px solid #FF69B4;
+    background-color: rgba(255, 105, 180, 0.1);
+}
+
+.special-2 {
+    border: 2px solid #EDFF00;
+    background-color: rgba(237, 255, 0, 0.1);
+}
+
 .town-hall-post-profile {
     width: 35px;
 }

@@ -1,3 +1,20 @@
 .register-form {
     color: #F2E9E4;
 }
+
+label {
+    font-size: 1rem;
+}
+
+form > div {
+    margin: 1.5rem 0;
+}
+
+#id_password1, #id_password2, #id_username, #id_password, #id_email, #id_first_name, #id_last_name {
+    background-color: #4A4E69;
+    color: #F2E9E4;
+    padding: 0.5rem 0.5rem;
+    margin: .2rem 0;
+    width: 100%;
+    border-radius: 5px;
+}
