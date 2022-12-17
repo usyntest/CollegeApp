@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Confession, Alert
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home(request):
     context = {
         "title": 'Town Hall',
@@ -10,6 +12,7 @@ def home(request):
     return render(request, 'client/home.html', context)
 
 
+@login_required
 def confessions(request):
     context = {
         "title": "Gossip Girl",
@@ -18,6 +21,15 @@ def confessions(request):
     return render(request, 'client/confessions.html', context)
 
 
+@login_required
+def create(request):
+    context = {
+        "title": "Create",
+    }
+    return render(request, 'client/create.html', context)
+
+
+@login_required
 def chat(request):
     context = {
         "title": "Chats"

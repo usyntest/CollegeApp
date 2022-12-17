@@ -8,9 +8,6 @@
 {% block content %}
     <div>
         <div class="content-heading-xoxo w-full max-w-screen-md fixed text-xl">XOXO</div>
-        <button class="fixed add-icon p-2 rounded-full">
-            <img class="h-7" src="{% static 'client/icons/add.svg' %}" alt="add icon svg">
-        </button>
         <div class="confessions-posts w-full">
             {% for confession in confessions %}
                 <div class="confessions-post my-4 flex">

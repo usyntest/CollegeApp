@@ -6,9 +6,6 @@
 
 {% block content %}
     <div>
-        <button class="fixed add-icon p-2 rounded-full">
-            <img class="h-7" src="{% static 'client/icons/add.svg' %}" alt="add icon svg">
-        </button>
         <div class="town-hall-posts w-full">
             {% for alert in alerts %}
                 {% if alert.status == 1 %}
