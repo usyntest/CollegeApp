@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .models import Student
 
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_user = form.save()
+            new_student = Student(user=new_user)
+            new_student.save()
             first_name = form.cleaned_data.get('first_name')
             messages.success(request, f"Account Created for {first_name}!\nTry Logging In")
             return redirect('login')

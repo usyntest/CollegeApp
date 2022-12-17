@@ -8,9 +8,11 @@
             <h1>{{ user.email }}</h1>
             <h1>{{ user.id }}</h1>
             <div class="w-full">
-                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
-                    <a href="{% url 'logout' %}">Logout</a>
-                </button>
+                <a href="{% url 'logout' %}">
+                    <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
+                        Logout
+                    </button>
+                </a>
             </div>
         {% else %}
             <h1>User Not Found</h1>
