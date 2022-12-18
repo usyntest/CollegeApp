@@ -31,9 +31,10 @@ def create(request):
     if request.method == 'POST':
         data = request.POST
         student = User.objects.get(id=int(data.get('user'))).student
-        print(data)
         if data['type'] == 'alert':
-            special = data.get('special', 0)
+            special = data.get('special', "0")
+            if special == 'on':
+                special = 1
             new_alert = Alert(content=data.get('content'), author=student, status=special) 
             new_alert.save()
             messages.success(request, f"New Alert Posted")
