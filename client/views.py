@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Confession, Alert
+from users.models import Student
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -26,6 +28,22 @@ def create(request):
     context = {
         "title": "Create",
     }
+    if request.method == 'POST':
+        data = request.POST
+        student = User.objects.get(id=int(data.get('user'))).student
+        print(data)
+        if data['type'] == 'alert':
+            special = data.get('special', 0)
+            new_alert = Alert(content=data.get('content'), author=student, status=special) 
+            new_alert.save()
+            messages.success(request, f"New Alert Posted")
+            return redirect('client-home')
+        
+        new_confession = Confession(content=data.get('content'), author=student)
+        new_confession.save()
+        messages.success(request, f"New Confession Posted")
+        return redirect('client-confessions')
+    
     return render(request, 'client/create.html', context)
 
 

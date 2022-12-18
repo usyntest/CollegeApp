@@ -26,11 +26,11 @@
                         <span class="town-hall-post-user-name">
                             {% if user.id == alert.author.id %}
                                 <a href="/profile">
-                                    {{ alert.author.first_name }} {{ alert.author.last_name }}
+                                    {{ alert.author.user.first_name }} {{ alert.author.user.last_name }}
                                 </a>
                             {% else %}
                                 <a href="/profile/{{ alert.author.id }}">
-                                    {{ alert.author.first_name }} {{ alert.author.last_name}}
+                                    {{ alert.author.user.first_name }} {{ alert.author.user.last_name}}
                                 </a>
                             {% endif %}
                         </span>

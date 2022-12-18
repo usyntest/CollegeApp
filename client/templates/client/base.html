@@ -21,8 +21,8 @@
         <div class="messages absolute top-10 right-0 z-10">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="single-message message-{{ message.tags }} relative p-6 rounded">
-                        <button class="single-message-close-btn absolute top-2 right-2"><img class="h-4" src="{% static 'client/icons/x.svg' %}" alt="cross icon svg"></button>
+                    <div class="single-message my-3 message-{{ message.tags }} relative p-6 rounded">
+                        <button class="single-message-close-btn absolute top-2 right-1"><img class="h-4" src="{% static 'client/icons/x.svg' %}" alt="cross icon svg"></button>
                         {{ message }}
                     </div>
                 {% endfor %}

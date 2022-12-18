@@ -1,4 +1,56 @@
 {% extends 'client/base.html' %}
+{% load static %}
+{% block css %}
+    <style>
+        label {
+            color: #F2E9E4;
+        }
+        legend {
+            color: #C9ADA7;
+            font-weight: 500;
+            cursor: default;
+        }
+    </style>
+{% endblock css%}
 {% block content %}
-    <h1>Hello, World</h1>
+    <form method="post" class="w-100" action="/create/">
+        {% csrf_token %}
+        <div class="type my-5">
+            <legend class="text-lg my-2 underline underline-offset-4">Type of post</legend>
+            <span class="mr-2">
+                <input type="radio" value="confession" id="confession" name="type" required>
+                <label for="confession">Confession</label>
+            </span>
+            <span class="mx-2">
+                <input type="radio" value="alert" id="alert" name="type" required>
+                <label for="alert">Alert</label>
+            </span>
+        </div>
+        
+        <div class="speciality my-5">
+            <legend class="text-lg my-2 underline underline-offset-4">Speciality</legend>
+            <div>
+                <input type="checkbox" name="special" id="speciality">
+                <label for="speciality">Special Alert</label>
+            </div>
+        </div>
+
+        <div class="content w-100 my-5">
+            <legend class="text-lg my-2 underline underline-offset-4">Content</legend>
+            <textarea name="content" class="h-40 p-3 rounded-lg" required></textarea>
+        </div>
+
+        <input type="hidden" value="{{ user.id }}" name="user">
+        <input type="hidden" value="" class="clout-input" name="clout">
+        
+        <div class="button my-5 w-100">
+            <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full submit-btn" type="submit">
+                Create
+            </button>
+        </div>
+    </form>
 {% endblock content %}
+
+{% block js %}
+    <script src="{% static 'client/create.js' %}"></script>
+{% endblock js %}

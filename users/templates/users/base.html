@@ -8,7 +8,7 @@
     {% if title %}
         <title>CollegeApp - {{ title }}</title>
     {% else %}
-        <title>CollegeApp</title>
+        <title>CollegeApp - Login</title>
     {% endif %}
     <link rel="stylesheet" href="{% static 'users/style.css' %}">
     {% block css %}{% endblock css %}
@@ -16,7 +16,13 @@
 <body>
     <div class="main p-2 relative min-h-screen max-h-screen max-w-screen-md mx-auto">
 
-        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">{{ title }}</div>
+        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">
+            {% if title %}
+                {{ title }}
+            {% else %}
+                Login
+            {% endif %}
+        </div>
         <div class="messages absolute top-10 right-0 z-10 w-25">
             {% if messages %}
                 {% for message in messages %}
