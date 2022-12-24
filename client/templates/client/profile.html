@@ -1,32 +1,122 @@
-{% extends 'client/base.html' %}
-{% block css %}
-{% endblock css %}
-{% block content %}
-    {% if user.is_authenticated %}
-        {% if user.username %}
-            <h1>{{ user.username }}</h1>
-            <h1>{{ user.email }}</h1>
-            <h1>{{ user.id }}</h1>
-            <div class="w-full">
-                <a href="{% url 'logout' %}">
-                    <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
-                        Logout
-                    </button>
-                </a>
-            </div>
-        {% else %}
-            <h1>User Not Found</h1>
-        {% endif %}
-    {% else %}    
-        <div class="flex w-full h-full justify-center items-center">
-            <div class="w-full">
-                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
-                    <a href="{% url 'login' %}">Login</a>
-                </button>
-                <button class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full" type="submit">
-                    <a href="{% url 'register' %}">Register</a>
-                </button>
-            </div>
+{% extends 'client/base.html' %} {% load static %} {% block css %}
+<link rel="stylesheet" href="{% static 'client/profile.css' %}" />
+{% endblock css %} {% block content %}
+<div class="flex md:w-72 w-100 mx-auto h-full justify-center items-center">
+  {% if user.is_authenticated %} {% if user.username %}
+  <div>
+    <div class="profile-card rounded-lg pt-10 pb-5 mb-5 shadow-lg shadow-zinc-600">
+      <div class="profile-card-img">
+        <img
+          src="{{ user.student.image.url }}"
+          class="rounded-full mx-auto w-2/4"
+          alt="profile picture of {{ user.username }}"
+        />
+      </div>
+      <div class="profile-card-details mt-2">
+        <div class="text-center">
+          <h1 class="text-xl font-bold leading-5">
+            {{ user.first_name }} {{ user.last_name }}
+          </h1>
+          <p class="text-sm">@{{ user.username }}</p>
         </div>
-    {% endif %}
+
+        <div class="w-full my-3">
+          <div class="w-100 text-center">
+            <img
+              class="h-7 inline"
+              src="{% static 'client/icons/course.svg' %}"
+              alt="course icon svg"
+            />
+            <p class="inline md:text-sm">
+                B.Sc (Hons) Computer Science
+            </p>
+          </div>
+          <div class="w-3/4 mx-auto flex pt-3">
+            <div class="w-2/4">
+              <div class="text-center">
+                <img
+                  class="h-7 inline"
+                  src="{% static 'client/icons/clout.svg' %}"
+                  alt="clout icon svg"
+                />
+                <p class="inline md:text-sm">{{ user.student.clout }}</p>
+              </div>
+            </div>
+            <div class="w-2/4">
+              <div class="text-center">
+                <img
+                  class="h-7 inline"
+                  src="{% static 'client/icons/year.svg' %}"
+                  alt="year icon svg"
+                />
+                <p class="inline md:text-sm">{{ user.student.year }} Year</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-48 mx-auto flex">
+          {% if user.email %}
+          <div class="w-full h-10 my-2">
+            <a href="mailto:{{ user.email }}" target="_blank">
+              <img
+                class="h-full mx-auto"
+                src="{% static 'client/icons/email.svg' %}"
+              />
+            </a>
+          </div>
+          {% endif %} {% if user.student.instagram %}
+          <div class="w-full h-10 my-2">
+            <a href="https://www.instagram.com/{{ user.student.instagram }}">
+              <img
+                class="h-full mx-auto"
+                src="{% static 'client/icons/instagram.svg' %}"
+              />
+            </a>
+          </div>
+          {% endif %} {% if user.student.snapchat %}
+          <div class="w-full h-10 my-2">
+            <a href="https://www.snapchat.com/add/{{ user.student.snapchat }}">
+              <img
+                class="h-full mx-auto"
+                src="{% static 'client/icons/snapchat.svg' %}"
+              />
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <a href="{% url 'logout' %}">
+      <button
+        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        type="submit"
+      >
+        Logout
+      </button>
+    </a>
+  </div>
+  {% else %}
+  <h1>User Not Found</h1>
+  {% endif %} {% else %}
+  <div class="w-full">
+    <a href="{% url 'login' %}">
+      <button
+        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        type="submit"
+      >
+        Login
+      </button>
+    </a>
+    <a href="{% url 'register' %}">
+      <button
+        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        type="submit"
+      >
+        Register
+      </button>
+    </a>
+  </div>
+  {% endif %}
+</div>
 {% endblock content %}
