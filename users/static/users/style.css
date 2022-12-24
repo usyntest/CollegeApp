@@ -44,3 +44,10 @@ body {
     bottom: 0;
     padding: 0 15px;
 }
+
+.btn {
+    color: #F2E9E4;
+    font-weight: 500;
+    outline: #F2E9E4 1px solid;
+} 
+

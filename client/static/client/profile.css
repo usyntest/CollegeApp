@@ -1,4 +1,13 @@
 .profile-card {
     background-color: #4A4E69;
+    color: #C9ADA7;
+}
+
+.profile-card-username {
+    color: #9A8C98;
+}
+
+.profile-card-course, .profile-card-year, .profile-card-clout {
     color: #F2E9E4;
+    
 }

@@ -4,7 +4,9 @@
 <div class="flex md:w-72 w-100 mx-auto h-full justify-center items-center">
   {% if user.is_authenticated %} {% if user.username %}
   <div>
-    <div class="profile-card rounded-lg pt-10 pb-5 mb-5 shadow-lg shadow-zinc-600">
+    <div
+      class="profile-card rounded-lg pt-10 pb-5 mb-5 shadow-lg shadow-zinc-600"
+    >
       <div class="profile-card-img">
         <img
           src="{{ user.student.image.url }}"
@@ -17,23 +19,21 @@
           <h1 class="text-xl font-bold leading-5">
             {{ user.first_name }} {{ user.last_name }}
           </h1>
-          <p class="text-sm">@{{ user.username }}</p>
+          <p class="profile-card-username text-sm">@{{ user.username }}</p>
         </div>
 
         <div class="w-full my-3">
-          <div class="w-100 text-center">
+          <div class="w-100 text-center profile-card-course">
             <img
               class="h-7 inline"
               src="{% static 'client/icons/course.svg' %}"
               alt="course icon svg"
             />
-            <p class="inline md:text-sm">
-                B.Sc (Hons) Computer Science
-            </p>
+            <p class="inline md:text-sm">B.Sc (Hons) Computer Science</p>
           </div>
           <div class="w-3/4 mx-auto flex pt-3">
             <div class="w-2/4">
-              <div class="text-center">
+              <div class="text-center profile-card-clout">
                 <img
                   class="h-7 inline"
                   src="{% static 'client/icons/clout.svg' %}"
@@ -43,7 +43,7 @@
               </div>
             </div>
             <div class="w-2/4">
-              <div class="text-center">
+              <div class="text-center profile-card-year">
                 <img
                   class="h-7 inline"
                   src="{% static 'client/icons/year.svg' %}"
@@ -67,7 +67,7 @@
           </div>
           {% endif %} {% if user.student.instagram %}
           <div class="w-full h-10 my-2">
-            <a href="https://www.instagram.com/{{ user.student.instagram }}">
+            <a href="https://www.instagram.com/{{ user.student.instagram }}" target="_blank">
               <img
                 class="h-full mx-auto"
                 src="{% static 'client/icons/instagram.svg' %}"
@@ -76,7 +76,7 @@
           </div>
           {% endif %} {% if user.student.snapchat %}
           <div class="w-full h-10 my-2">
-            <a href="https://www.snapchat.com/add/{{ user.student.snapchat }}">
+            <a href="https://www.snapchat.com/add/{{ user.student.snapchat }}" target="_blank">
               <img
                 class="h-full mx-auto"
                 src="{% static 'client/icons/snapchat.svg' %}"
@@ -89,7 +89,7 @@
     </div>
     <a href="{% url 'logout' %}">
       <button
-        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        class="btn py-2 my-4 px-4 bg-blue-700 rounded w-full"
         type="submit"
       >
         Logout
@@ -102,7 +102,7 @@
   <div class="w-full">
     <a href="{% url 'login' %}">
       <button
-        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        class="btn py-2 my-4 px-4 bg-blue-700 rounded w-full"
         type="submit"
       >
         Login
@@ -110,7 +110,7 @@
     </a>
     <a href="{% url 'register' %}">
       <button
-        class="py-2 my-4 px-4 outline outline-blue-500 text-blue-500 rounded w-full"
+        class="btn py-2 my-4 px-4 bg-blue-700 rounded w-full"
         type="submit"
       >
         Register
