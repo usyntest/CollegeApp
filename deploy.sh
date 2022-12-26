@@ -7,7 +7,6 @@ cd "$(dirname "$0")" || {
 echo "in_progress"
 
 set -e
-trap 'echo "failure"; exit 1' ERR
 {
   # activate virtual environment
   source ./venv/bin/activate
@@ -20,10 +19,11 @@ trap 'echo "failure"; exit 1' ERR
   # static
   python manage.py collectstatic --noinput
 
-} >/dev/null 2>/dev/null
-
+} >/dev/null 2>/dev/null || {
+  echo "failure"
+  exit 1
+}
 set +e
-trap - ERR
 
 echo "success"
 
