@@ -1,9 +1,9 @@
 create_deployment() {
-  python -c "import deploy.github as gh; gh.create_deployment()"
+  python3 -c "import deploy.github as gh; gh.create_deployment()"
 }
 
 update_status() {
-  python -c "import deploy.github as gh; gh.update_status('$1', '$2')"
+  python3 -c "import deploy.github as gh; gh.update_status('$1', '$2')"
 }
 
 failure() {
