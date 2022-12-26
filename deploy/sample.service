@@ -1,0 +1,11 @@
+[Unit]
+Description=Server for usyntest.co
+After=multi-user.target
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/bin/python3 /path/to/deploy/deploy.sh
+
+[Install]
+WantedBy=multi-user.target
