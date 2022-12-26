@@ -3,6 +3,7 @@ create_deployment() {
 }
 
 update_status() {
+  echo "Updating status to '$2'"
   python -c "import deploy.github as gh; gh.update_status('$1', '$2')"
 }
 
@@ -18,30 +19,30 @@ failure() {
 # requires the virtualenv to be activated, therefore a
 # chicken and the egg problem arises.
 
+set -e
+trap "failure" ERR
+
 # switch to project directory
 cd "$(dirname "$0")"/.. 2>/dev/null || exit
 
-{
-  # activate virtual environment
-  source ./venv/bin/activate || exit
+# activate virtual environment
+source ./venv/bin/activate || exit
 
-  # get deployment id
-  DEPLOY_ID=$(create_deployment)
-  update_status "$DEPLOY_ID" "in_progress"
+# github integration
+DEPLOY_ID=$(create_deployment)
+update_status "$DEPLOY_ID" "in_progress"
 
-  git pull || failure
-  pip install -r requirements.txt || failure
+git pull
+pip install -r requirements.txt
 
-  # migrations
-  python manage.py makemigrations || failure
-  python manage.py migrate || failure
+# migrations
+python manage.py makemigrations
+python manage.py migrate
 
-  # static
-  python manage.py collectstatic --noinput || failure
-
-} >/dev/null 2>/dev/null
+# static
+python manage.py collectstatic --noinput
 
 update_status "$DEPLOY_ID" "success"
 
 # run gunicorn
-gunicorn -b 0.0.0.0:59595 CollegeApp.wsgi || failure
+gunicorn -b 0.0.0.0:59595 CollegeApp.wsgi
