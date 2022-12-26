@@ -15,6 +15,13 @@ Install Django
 ```
 $ pip install -r requirements.txt
 ```
+Make tables
+```
+python manage.py makemigrations
+```
+```
+python manage.py migrate
+```
 Run it
 ```
 python manage.py runserver
