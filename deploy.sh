@@ -6,16 +6,19 @@ cd "$(dirname "$0")" || {
 
 echo "in_progress"
 
-# activate virtual environment
-source ./venv/bin/activate
-pip install -r requirements.txt
+{
+  # activate virtual environment
+  source ./venv/bin/activate
+  pip install -r requirements.txt
 
-# migrations
-python manage.py makemigrations
-python manage.py migrate
+  # migrations
+  python manage.py makemigrations
+  python manage.py migrate
 
-# static
-python manage.py collectstatic --noinput
+  # static
+  python manage.py collectstatic --noinput
+
+} >/dev/null 2>/dev/null
 
 echo "success"
 
