@@ -2,3 +2,6 @@ django
 Pillow
 python-dotenv
 gunicorn
+requests
+PyJWT
+cryptography

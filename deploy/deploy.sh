@@ -1,12 +1,26 @@
+create_deployment() {
+  python -c "import deploy.github as gh; gh.create_deployment()"
+}
+
+update_status() {
+  python -c "import deploy.github as gh; gh.update_status('$1', '$2')"
+}
+
 failure() {
+  update_status "$DEPLOY_ID" "failure"
   echo "failure" >"$(tty)" # to override /dev/null redirection
   exit 1
 }
 
+############################################################
+DEPLOY_ID=$(create_deployment)
+
 # switch to project directory
 cd "$(dirname "$0")"/.. 2>/dev/null || failure
 
-echo "in_progress"
+git pull || failure
+
+update_status "$DEPLOY_ID" "in_progress"
 
 {
   # activate virtual environment
@@ -22,7 +36,7 @@ echo "in_progress"
 
 } >/dev/null 2>/dev/null
 
-echo "success"
+update_status "$DEPLOY_ID" "success"
 
 # run gunicorn
 gunicorn -b 0.0.0.0:59595 CollegeApp.wsgi || failure
