@@ -1,5 +1,10 @@
 # switch to project directory
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")" || {
+  echo "failure"
+  exit 1
+}
+
+echo "in_progress"
 
 # activate virtual environment
 source ./venv/bin/activate
@@ -10,7 +15,9 @@ python manage.py makemigrations
 python manage.py migrate
 
 # static
-python manage.py collectstatic
+python manage.py collectstatic --noinput
+
+echo "success"
 
 # run gunicorn
-gunicron -b 0.0.0.0:59595 CollegeApp.wsgi
+gunicorn -b 0.0.0.0:59595 CollegeApp.wsgi
