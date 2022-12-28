@@ -18,8 +18,8 @@ api = GithubApp(
 
 def create_deployment():
     # printing it so that bash script can store the output
-    print(api.create_deployment(OWNER, REPOSITORY)["id"])
+    print(api.create_deployment(OWNER, REPOSITORY, branch="master")["id"])
 
 
 def update_status(deployment_id, state):
-    api.update_deployment_status(OWNER, REPOSITORY, deployment_id, state=state)
+    api.update_deployment_status(OWNER, REPOSITORY, branch="master", deployment_id, state=state)
