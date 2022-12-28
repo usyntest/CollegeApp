@@ -3,8 +3,8 @@ create_deployment() {
 }
 
 update_status() {
-  echo "Updating status to '$2'"
-  python -c "import deploy.github as gh; gh.update_status('$1', '$2')"
+  echo "Updating status to '$1'"
+  python -c "import deploy.github as gh; gh.update_status('$DEPLOY_ID', '$1')"
 }
 
 failure() {
@@ -30,7 +30,7 @@ source ./venv/bin/activate || exit
 
 # github integration
 DEPLOY_ID=$(create_deployment)
-update_status "$DEPLOY_ID" "in_progress"
+update_status "in_progress"
 
 git pull
 pip install -r requirements.txt
@@ -42,7 +42,7 @@ python manage.py migrate
 # static
 python manage.py collectstatic --noinput
 
-update_status "$DEPLOY_ID" "success"
+update_status "success"
 
 # run gunicorn
 gunicorn -b 0.0.0.0:59595 CollegeApp.wsgi
