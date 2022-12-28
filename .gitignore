@@ -4,6 +4,7 @@ __pycache__/
 *.log
 *.pot
 *.pyc
+.env
 db.sqlite3
 media/
 migrations/
