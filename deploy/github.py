@@ -5,7 +5,6 @@ from .api import GithubApp
 from dotenv import load_dotenv
 
 load_dotenv((Path(__file__).parent.parent / ".env").resolve())
-print((Path(__file__).parent.parent / ".env").resolve())
 
 OWNER = os.environ.get("OWNER")
 REPOSITORY = os.environ.get("REPOSITORY")
