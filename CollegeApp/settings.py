@@ -40,7 +40,7 @@ else:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
 
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['*', "0.0.0.0:8000", "192.168.1.6:8000"]
 
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

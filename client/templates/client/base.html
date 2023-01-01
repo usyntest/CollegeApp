@@ -17,7 +17,12 @@
 <body>
     <div class="main p-2 relative min-h-screen max-h-screen max-w-screen-md mx-auto">
 
-        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">{{ title }}</div>
+        <div class="p-2 content-heading absolute top-0 left-0 text-2xl w-full border-b font-bold">
+            {{ title }}
+            {% if title == "Gossip Girl" %}
+                <div class="content-heading-xoxo w-full max-w-screen-md fixed text-xl">XOXO</div>
+            {% endif %}
+        </div>
         <div class="messages absolute top-10 right-0 z-10">
             {% if messages %}
                 {% for message in messages %}
