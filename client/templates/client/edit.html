@@ -1,0 +1,54 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+    <form class="edit-form md:w-1/2 w-100 mx-auto" action="/profile/edit/" method="POST">
+        {% csrf_token %}
+        <div class="py-2">
+            <label for="course">Course</label>
+            <br>
+            <select class="edit-form-select p-2 w-full rounded shadow-lg" name="course" id="course" required>
+                <option value="B.Com (Hons.)">B.Com (Hons.)</option>
+                <option value="B.Com.">B.Com.</option>
+                <option value="B.A. (Hons) Economics">B.A. (Hons) Economics</option>
+                <option value="B.Sc. (Hons.) Computer Science">B.Sc. (Hons.) Computer Science</option>
+                <option value="B.A. (Hons.) Punjabi">B.A. (Hons.) Punjabi</option>
+                <option value="B.A. (Hons) Business Economics">B.A. (Hons) Business Economics (BBE) </option>
+                <option value="Bachelor in Management Studies">Bachelor in Management Studies (BMS)</option>
+            </select>
+        </div>
+        <div class="py-2">
+            <label for="year">Year</label>
+            <br>
+            <select class="edit-form-select p-2 w-full rounded shadow-lg" name="year" id="year" required>
+                <option value="1">1st Year</option>
+                <option value="2">2nd Year</option>
+                <option value="3">3rd Year</option>
+                <option value="4">4th Year</option>
+            </select>
+        </div>
+        <div class="py-2">
+            <label for="instagram">Instagram Username</label>
+            <br>
+            <input class="edit-form-input p-2 w-full rounded shadow-lg" id="instagram" name="instagram" type="text" placeholder="hulle_hulaare"
+                {% if user.student.instagram %}
+                       value="user.student.instagram"
+                {% endif %}>
+        </div>
+        <div class="py-2">
+            <label for="snapchat">Snapchat Username</label>
+            <br>
+            <input class="edit-form-input p-2 w-full rounded shadow-lg" id="snapchat" name="snapchat" type="text" placeholder="chomu.biltech"
+               {% if user.student.snapchat %}
+                   value="user.student.snapchat">
+               {% endif %}>
+        </div>
+        <input type="hidden" value="{{ user.id }}" name="user">
+        <div class="button my-5 w-100">
+            <button class="btn py-2 my-4 px-4 bg-blue-700 rounded w-full submit-btn" type="submit">
+                Update Profile
+            </button>
+        </div>
+    </form>
+
+
+{% endblock content %}

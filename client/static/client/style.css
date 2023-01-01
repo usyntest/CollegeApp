@@ -4,6 +4,8 @@ body {
     background-color: #22223B;
     color: #4A4E69;
     font-family: 'Montserrat', sans-serif;
+    max-height: 100vh;
+    min-height: 100vh;
 }
 
 .content-heading {
@@ -51,3 +53,16 @@ textarea {
     font-weight: 500;
     outline: #F2E9E4 1px solid;
 } 
+
+/* EDIT FORM */
+.edit-form {
+    color: #F2E9E4;
+}
+
+.edit-form-input {
+    background-color: #4A4E69;
+}
+
+.edit-form-select {
+    background-color: #4A4E69;
+}

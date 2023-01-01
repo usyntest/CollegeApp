@@ -62,8 +62,8 @@ def other_profile(request, profile_id):
     }
     if profile_id:
         user = User.objects.filter(id=profile_id).first()
-    if user:
-        context["user"] = user
+        if user:
+            context["user"] = user
     return render(request, 'client/other_profile.html', context)
 
 
@@ -72,3 +72,28 @@ def profile(request):
         "title": "Profile"
     }
     return render(request, 'client/profile.html', context)
+
+@login_required
+def edit(request):
+    context = {
+        "title": "Profile Edit"
+    }
+    if request.method == "POST":
+        try:
+            data = request.POST
+            student = User.objects.get(id=int(data.get('user'))).student
+            student.course = data.get('course')
+            student.year = int(data.get('year'))
+            if len(data.get('snapchat')):
+                student.snapchat = data.get('snapchat')
+            if len(data.get('instagram')):
+                student.instagram = data.get('instagram')
+            student.save()
+
+            messages.success(request, f"Account Updated")
+        except Exception as e:
+            print(e)
+            messages.error(request, f"Account Couldn't Be Updated")
+        return redirect('client-profile')
+
+    return render(request, 'client/edit.html', context)

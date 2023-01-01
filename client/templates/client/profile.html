@@ -5,8 +5,9 @@
   {% if user.is_authenticated %} {% if user.username %}
   <div>
     <div
-      class="profile-card rounded-lg pt-10 pb-5 mb-5 shadow-lg shadow-zinc-600"
+      class="profile-card relative rounded-lg pt-10 pb-5 mb-5 shadow-lg shadow-zinc-600"
     >
+    <div class="absolute top-6 right-6"><a href="/profile/edit"><img class="h-7" src="{% static 'client/icons/edit.svg' %}" alt="edit icon svg"></a></div>
       <div class="profile-card-img">
         <img
           src="{{ user.student.image.url }}"
@@ -29,7 +30,7 @@
               src="{% static 'client/icons/course.svg' %}"
               alt="course icon svg"
             />
-            <p class="inline md:text-sm">B.Sc (Hons) Computer Science</p>
+            <p class="inline md:text-sm">{{ user.student.course }}</p>
           </div>
           <div class="w-3/4 mx-auto flex pt-3">
             <div class="w-2/4">
