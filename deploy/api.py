@@ -146,11 +146,12 @@ class GithubApp:
 
     @automatic_token_renew
     def update_deployment_status(self, owner, repository, deployment_id, description="", environment="production",
-                                 state="success"):
+                                 state="success", environment_url=""):
         endpoint = self.endpoint(f"repos/{owner}/{repository}/deployments/{deployment_id}/statuses")
         data = json.dumps({
             "environment": environment, "state": state,
             "description": description,
+            "environment_url": environment_url,
         })
 
         with requests.post(endpoint, headers=self.token_header, data=data) as response:

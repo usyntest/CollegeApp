@@ -4,6 +4,7 @@ __pycache__/
 *.log
 *.pot
 *.pyc
+*.pickle
 .env
 db.sqlite3
 media/profile_pics/
