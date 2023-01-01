@@ -36,5 +36,7 @@ def create_deployment():
 
 
 def update_status(deployment_id, state):
-    api.update_deployment_status(OWNER, REPOSITORY, deployment_id, state=state)
+    api.update_deployment_status(
+        OWNER, REPOSITORY, deployment_id, state=state, environment_url=os.environ.get("ENVIRONMENT_URL")
+    )
     save_api_cache()
