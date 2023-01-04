@@ -61,9 +61,10 @@ def other_profile(request, profile_id):
         "title": "Profile"
     }
     if profile_id:
-        user = User.objects.filter(id=profile_id).first()
-        if user:
-            context["user"] = user
+        other_user = User.objects.filter(id=profile_id).first()
+        print(other_user)
+        if other_user:
+            context["other_user"] = other_user
     return render(request, 'client/other_profile.html', context)
 
 

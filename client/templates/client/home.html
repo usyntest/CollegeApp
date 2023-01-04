@@ -29,7 +29,7 @@
                                     {{ alert.author.user.first_name }} {{ alert.author.user.last_name }}
                                 </a>
                             {% else %}
-                                <a href="/profile/{{ alert.author.id }}">
+                                <a href="/profile/{{ alert.author.user.id }}">
                                     {{ alert.author.user.first_name }} {{ alert.author.user.last_name}}
                                 </a>
                             {% endif %}
