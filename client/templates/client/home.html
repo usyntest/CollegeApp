@@ -8,42 +8,59 @@
     <div>
         <div class="town-hall-posts w-full">
             {% for alert in alerts %}
-                {% if alert.status == 1 %}
-                    <div class="town-hall-post special-1 p-2 my-2 flex rounded-lg">
-                {% elif alert.status == 2 %}
-                    <div class="town-hall-post p-2 special-2 my-2 flex rounded-lg">
+                {% if alert.status == 3 %}
+                    <div class="town-hall-post special-3 italic p-1 my-2">
+                        <p class="text-sm text-center">{{ alert.content }}
+                            <span class="special-3-user font-bold">
+                                {% if user.id == alert.author.id %}
+                                    <a href="/profile">
+                                        {{ alert.author.user.first_name }} {{ alert.author.user.last_name }}
+                                    </a>
+                                {% else %}
+                                    <a href="/profile/{{ alert.author.user.id }}">
+                                        {{ alert.author.user.first_name }} {{ alert.author.user.last_name}}
+                                    </a>
+                                {% endif %}
+                        </span></p>
+                    </div>
                 {% else %}
-                    <div class="town-hall-post p-2 my-2 flex rounded-lg">
-                {% endif %}
+                    {% if alert.status == 1 %}
+                        <div class="town-hall-post special-1 p-2 my-2 flex rounded-lg">
+                    {% elif alert.status == 2 %}
+                        <div class="town-hall-post p-2 special-2 my-2 flex rounded-lg">
+                    {% else %}
+                        <div class="town-hall-post p-2 my-2 flex rounded-lg">
+                    {% endif %}
+                        <div>
+                            <div class="town-hall-post-profile rounded-full mt-1">
+                                <img class="rounded-full town-hall-post-profile-img" src="{{ alert.author.image.url }}" alt="f">
+                            </div>
+                        </div>
 
-                    <div>
-                        <div class="town-hall-post-profile rounded-full mt-1">
-                            <img class="rounded-full town-hall-post-profile-img" src="{{ alert.author.image.url }}" alt="f">
+                        <div class="ml-2">
+                            <span class="town-hall-post-user-name">
+                                {% if user.id == alert.author.id %}
+                                    <a href="/profile">
+                                        {{ alert.author.user.first_name }} {{ alert.author.user.last_name }}
+                                    </a>
+                                {% else %}
+                                    <a href="/profile/{{ alert.author.user.id }}">
+                                        {{ alert.author.user.first_name }} {{ alert.author.user.last_name}}
+                                    </a>
+                                {% endif %}
+                            </span>
+                            <span class="town-hall-post-date-time">{{ alert.date_posted.date }},</span>
+                            <span class="town-hall-post-date-time uppercase">{{ alert.date_posted.time }}</span>
+
+                            <h1>{{ alert.content }}</h1>
+                            {% if alert.img %}
+                                <img src="{{ alert.author.profile_img }}" alt="post img">
+                            {% endif %}
                         </div>
                     </div>
+                {% endif %}
 
-                    <div class="ml-2">
-                        <span class="town-hall-post-user-name">
-                            {% if user.id == alert.author.id %}
-                                <a href="/profile">
-                                    {{ alert.author.user.first_name }} {{ alert.author.user.last_name }}
-                                </a>
-                            {% else %}
-                                <a href="/profile/{{ alert.author.user.id }}">
-                                    {{ alert.author.user.first_name }} {{ alert.author.user.last_name}}
-                                </a>
-                            {% endif %}
-                        </span>
-                        <span class="town-hall-post-date-time">{{ alert.date_posted.date }},</span>
-                        <span class="town-hall-post-date-time uppercase">{{ alert.date_posted.time }}</span>
 
-                        <h1>{{ alert.content }}</h1>
-                        {% if alert.img %}
-                            <img src="{{ alert.author.profile_img }}" alt="post img">
-                        {% endif %}
-                    </div>
-
-                </div>
             {% endfor %}
         </div>
     </div>

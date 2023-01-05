@@ -1,4 +1,4 @@
-# CollegeApp
+# GGSocial
 
 ## Running the project
 Run these commands in the project directory  
@@ -26,3 +26,10 @@ Run it
 ```
 python manage.py runserver
 ```
+
+## Documentation
+### Types of Alerts
+- **Normal Post** - No Different Styling
+- **Special Post 1** - Post with a pink border and background
+- **Special Post 2** - Only can be made by me
+- **Special Post 3** - Small alerts like someone joined
