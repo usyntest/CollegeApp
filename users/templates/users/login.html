@@ -1,7 +1,12 @@
 {% extends 'users/base.html' %} {% load static %} {% block css %}
 <link rel="stylesheet" href="{% static 'users/register.css' %}" />
 {% endblock css %} {% block content %}
-<div class="md:w-72 w-100 mx-auto">
+<div class="md:w-72 w-100 pt-12 mx-auto">
+  <img
+    class="w-2/4 mx-auto"
+    src="https://upload.wikimedia.org/wikipedia/en/1/19/The_Official_Seal_of_SGGSCC.png"
+    alt="college logo"
+  />
   <form method="POST" class="register-form text-sm">
     {% csrf_token %} {{ form.as_div }}
     <button class="btn py-2 my-1 px-4 bg-blue-700 rounded w-full" type="submit">
